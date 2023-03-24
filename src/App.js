@@ -1,31 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavTabs from './components/NavTabs';
-import Home from './components/pages/Home';
-import About from './components/pages/About';
-import Contact from './components/pages/Contact';
-import projects from './components/pages/Projects';
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Experience from "./pages/Experience";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ProjectDisplay from "./pages/ProjectDisplay";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <NavTabs />
-        {/* Wrap Route elements in a Routes component */}
+    <div className="App">
+      <Router>
+        <Navbar />
         <Routes>
-          {/* Define routes using the Route component to render different page components at different paths */}
-          {/* Define a default route that will render the Home component */}
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="projects" element={<Projects />} />
-          {/* Define a route that will have descendant routes */}
-          <Route path="contact/*" element={<Contact />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:id" element={<ProjectDisplay />} />
+          <Route path="/experience" element={<Experience />} />
         </Routes>
-      </div>
-    </Router>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 
 export default App;
-
